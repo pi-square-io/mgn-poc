@@ -3,5 +3,5 @@ it is a drift & shift based solution used to expedite the migration of applicati
 
 # mgn-poc
 ## building architecture 
-
+![mgn architecture](https://github.com/pi-square-io/mgn-poc/blob/main/images/MGN.vpd.png)
 Application migration service poc
