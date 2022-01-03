@@ -2,11 +2,6 @@ variable "instance_count" {
   default = "3"
 }
 
-# variable "instance_tags" {
-#   type = list
-#   default = ["Terraform-1", "Terraform-2", "Terraform-3"]
-# }
-
 
 variable "project_tags" {
   description = "Project tags to be attached to resources"
