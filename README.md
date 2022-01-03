@@ -1,5 +1,5 @@
 # Application Migration Service's POC
-it is a drift & shift based solution used to expedite the migration of applications to aws. it is used to reduce the cost of migrating physical, virtual and cloud based applications to aws without having compatibility or performance issues.
+it is a lift & shift based solution used to expedite the migration of applications to aws. It is used to reduce the cost of migrating physical, virtual and cloud based applications to aws without having compatibility or performance issues.
 
 
 ## Architecture 
