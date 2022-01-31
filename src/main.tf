@@ -13,9 +13,9 @@ resource "tls_private_key" "private_key" {
 
 resource "aws_key_pair" "generated_key" {
   count      = var.instance_count
-  tags = merge(var.project_tags, { Name = "generated_key-${count.index}" })
   key_name = "generated_key-${count.index}"
   public_key = "tls_private_key.private_key.{count.index}.public_key_openssh"
+  tags = merge(var.project_tags, { Name = "generated_key-${count.index}" })
 }
 
 
@@ -36,5 +36,4 @@ resource "aws_instance" "web" {
   EOF
 
   tags = merge(var.project_tags, { Name = "Server-${count.index}" })
-
 }
