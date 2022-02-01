@@ -22,7 +22,7 @@ resource "aws_key_pair" "generated_key" {
 resource "local_file" "private_key" {
     count      = var.instance_count
     content  = tls_private_key.private_key[count.index].private_key_pem
-    filename = "generated_key-${count.index}.pem"
+    filename = "keys/generated_key-${count.index}.pem"
 }
 
 
