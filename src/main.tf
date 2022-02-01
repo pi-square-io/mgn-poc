@@ -11,7 +11,6 @@ resource "tls_private_key" "private_key" {
 }
 
 
-
 resource "aws_key_pair" "generated_key" {
   count      = var.instance_count
   key_name   = "generated_key-${count.index}"
@@ -19,11 +18,14 @@ resource "aws_key_pair" "generated_key" {
   tags       = merge(var.project_tags, { Name = "generated_key-${count.index}" })
 }
 
+
 resource "local_file" "private_key" {
     count      = var.instance_count
     content  = tls_private_key.private_key[count.index].private_key_pem
     filename = "generated_key-${count.index}.pem"
 }
+
+
 resource "aws_security_group" "security_group" {
   vpc_id = data.aws_vpc.default.id
 
@@ -47,16 +49,17 @@ resource "aws_security_group" "security_group" {
     prefix_list_ids = []
   }
 
-  tags = {
-    Name = "security_group"
-  }
+  tags =  merge(var.project_tags, { Name = "Security-group" })
+  
 }
+
+
 resource "aws_instance" "web" {
   count         = var.instance_count
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
   key_name      = "generated_key-${count.index}"
-
+  vpc_security_group_ids = [aws_security_group.security_group.id]
   user_data     = <<-EOF
   #!/bin/bash
   echo "*** Installing apache2"
