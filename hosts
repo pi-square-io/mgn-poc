@@ -1,0 +1,15 @@
+[aws]
+vm1 ansible_ssh_host=3.71.185.147 ansible_ssh_private_key_file=/home/wael/aws/ansible/keys/key.pem 
+
+
+
+[aws:vars]
+ansible_ssh_user=ubuntu
+
+[local]
+vm2 ansible_ssh_host=192.168.89.130 
+
+[local:vars]
+ansible_ssh_user=wael
+ansible_password=eve
+

@@ -1,0 +1,25 @@
+---
+- name: Install agent on servers
+  hosts: all
+  tasks:
+    - name: Download agent
+      get_url: 
+        url: https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/aws-replication-installer-init.py 
+        dest: /tmp/aws-replication-installer-init.py
+
+    - name: Ansible apt install python3
+      become: true
+      become_method: sudo
+      apt:
+        name: python3
+        state: present
+
+    - name: run agent
+      become: true
+      become_method: sudo
+      # become_method: sudo
+      command: yes "" | sudo python3 /tmp/aws-replication-installer-init.py --region us-west-2 --aws-access-key-id {{ lookup('env', 'AWS_ACESS_KEY_ID') }} --aws-secret-access-key {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }} > /tmp/test.txt
+          
+    # - name: check var
+    #   debug:
+    #     msg: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
