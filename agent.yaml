@@ -16,9 +16,7 @@
 
     - name: run agent
       become: true
-      become_method: sudo
-      # become_method: sudo
-      command: yes "" | sudo python3 /tmp/aws-replication-installer-init.py --region us-west-2 --aws-access-key-id {{ lookup('env', 'AWS_ACESS_KEY_ID') }} --aws-secret-access-key {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }} > /tmp/test.txt
+      shell: echo |python3 /tmp/aws-replication-installer-init.py --region eu-central-1 --aws-access-key-id {{ lookup('env', 'AWS_ACCESS_KEY_ID') }} --aws-secret-access-key {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }} 
           
     # - name: check var
     #   debug:
