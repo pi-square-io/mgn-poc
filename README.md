@@ -7,7 +7,7 @@ it is a lift & shift based solution used to expedite the migration of applicatio
 
 
 ## Usage
-### Why not using cloudEndure ? 
+### Why not using cloudEndure 
 CloudEndure Migration will continue to be available for use in AWS GovCloud and China Regions, it will no longer be available in other AWS Regions as of December 30, 2022
 The new alternative is using aws application migration service (mgn)
 
@@ -24,3 +24,20 @@ Migration between different AWS accounts, Availability Zones, or regions.
 2. Replicate to AWS
 3. Perform tests
 4. Execute cutover
+
+### MGN with Ansible
+Ansible is an agentless, that means it uses SSH to push changes from a single machine source to multiple remote resources.
+The commands in Ansible can be invoked either ad hoc on the command line or via "playbooks" written in YAML.
+
+#### When to use ad hoc commands & playbooks 
+- Ansible-playbook is used for configuration management and deployment.
+- The ad-hoc commands are not used for configuration management and deployment, because these commands are of one time usage. They can be run individually to perform quick functions such as rebooting all of the company servers.
+
+#### Debrieving the Ansible code source
+Ansible uses playbook to describe automation jobs
+##### the inventory file
+Ansible works against multiple systems in the infrastructure at the same time. It does this by selecting portions of systems listed in Ansible’s inventory file.
+An inventory file can contain multiple systems which we can classify based on its group 
+##### the Playbook file
+
+
