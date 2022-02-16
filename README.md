@@ -35,9 +35,9 @@ The commands in Ansible can be invoked either ad hoc on the command line or via 
 
 #### Debrieving the Ansible code source
 Ansible uses playbook to describe automation jobs
-##### the inventory file
+- the inventory file
 Ansible works against multiple systems in the infrastructure at the same time. It does this by selecting portions of systems listed in Ansible’s inventory file.
 An inventory file can contain multiple systems which we can classify based on its group 
-##### the Playbook file
+- the Playbook file
 
 
