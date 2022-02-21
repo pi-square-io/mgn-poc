@@ -46,11 +46,12 @@ iex(iwr https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts
 #### OpenSSH installation commands
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 ###### This should return the following output if neither are already installed:
-<!-- Name  : OpenSSH.Client~~~~0.0.1.0
+Name  : OpenSSH.Client~~~~0.0.1.0
 State : NotPresent
 
 Name  : OpenSSH.Server~~~~0.0.1.0
-State : NotPresent -->
+State : NotPresent
+
 ##### Install the OpenSSH Client
 Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 
