@@ -44,6 +44,8 @@ An inventory file can contain multiple systems which we can classify based on it
 iex(iwr https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1).Content
 
 #### OpenSSH installation commands
+url: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
+
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 ###### This should return the following output if neither are already installed:
 Name  : OpenSSH.Client~~~~0.0.1.0
@@ -77,5 +79,5 @@ ansible linux -m ping -i hosts -vvv
 #### Ping Windows Servers
 ansible win_ssh -m win_ping -i hosts -vvv
 
-#### Run playbook on specific group
-ansible-playbook -l win_winrm -i hosts agent.yaml --extra-vars "region=<region> user_win=<user> pwd_win=<pwd>" -vvv
+#### Run playbook on specific group example
+ansible-playbook -l win_winrm -i hosts agent.yaml --extra-vars "region=region user_win=user pwd_win=pwd" -vvv
