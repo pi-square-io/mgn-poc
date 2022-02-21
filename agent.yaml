@@ -23,7 +23,7 @@
     #     msg: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
 
 - name: Install agent on windows servers
-  hosts: win
+  hosts: win_ssh,win_winrm
   tasks:
     - name: Download agent
       ansible.windows.win_get_url:
