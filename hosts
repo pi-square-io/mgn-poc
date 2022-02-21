@@ -4,5 +4,18 @@ vm1 ansible_ssh_host=3.71.185.147 ansible_ssh_private_key_file=./key/key.pem
 [aws:vars]
 ansible_ssh_user=ubuntu
 
+[win]
+35.88.200.196
 
+[win:vars]
+ansible_connection=winrm 
+ansible_user={{ user_win }} 
+ansible_password={{ pwd_win }}
+ansible_winrm_server_cert_validation=ignore
 
+[local]
+vm2 ansible_ssh_host=192.168.89.130 
+
+[local:vars]
+ansible_ssh_user= {{ user_local }} 
+ansible_password= {{ pwd_local }}

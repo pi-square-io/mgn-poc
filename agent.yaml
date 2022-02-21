@@ -1,6 +1,6 @@
 ---
-- name: Install agent on servers
-  hosts: all
+- name: Install agent on linux servers
+  hosts: linux
   tasks:
     - name: Download agent
       get_url: 
@@ -21,3 +21,15 @@
     # - name: check var
     #   debug:
     #     msg: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+
+- name: Install agent on windows servers
+  hosts: win
+  tasks:
+    - name: Download agent
+      ansible.windows.win_get_url:
+        url: "https://aws-application-migration-service-{{ region }}.s3.{{ region }}.amazonaws.com/latest/windows/AwsReplicationWindowsInstaller.exe"
+        dest: C:\AwsReplicationWindowsInstaller.exe
+
+   
+    - name: run agent
+      win_shell: $nl = [Environment]::NewLine ; $nl |C:\AwsReplicationWindowsInstaller.exe --region {{ region }} --aws-access-key-id {{ lookup('env', 'AWS_ACCESS_KEY_ID') }} --aws-secret-access-key {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}
