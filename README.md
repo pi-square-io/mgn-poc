@@ -95,8 +95,10 @@ iex(iwr https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts
 
 #### OpenSSH installation commands on windows host
 
+ 
+[check installation guide](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
+
 ```sh
-url: https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 ```
 
