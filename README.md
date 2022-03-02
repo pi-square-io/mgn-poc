@@ -70,7 +70,10 @@ Windows servers can be managed with Ansible through two methods:
 
 ##### Ping Windows Servers
 To test the connectivity between ansible and hosts in the linux group, we can use the module ping :
+
+```sh
 ansible win_ssh -m win_ping -i hosts -vvv
+```
 
 #### Run playbook on windows servers
 To Run the playbook on windows group, we specify the group name, the inventory file, and the extra vars which are the target region where to deploy the migration and the credentials of the user that we will authentificate with.
@@ -80,7 +83,8 @@ ansible-playbook -l win_winrm -i hosts agent.yaml --extra-vars "region=region us
 ```
 
 
-#### Extra target hosts Configurations
+
+## Extra target hosts Configurations
 
 #### WINRM installation command on windows host
 Installing winRM on windows targets.
@@ -97,12 +101,13 @@ Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 ```
 
 ###### This should return the following output if neither are already installed:
+```sh
 Name  : OpenSSH.Client~~~~0.0.1.0
 State : NotPresent
 
 Name  : OpenSSH.Server~~~~0.0.1.0
 State : NotPresent
-
+```
 ##### Install the OpenSSH Client
 
 ```sh
