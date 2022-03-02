@@ -2,7 +2,7 @@
 vm1 ansible_ssh_host=3.71.185.147 ansible_ssh_private_key_file={{ key }} 
 
 [linux:vars]
-ansible_ssh_user=ubuntu
+ansible_ssh_user={{ user_linux }}
 
 [win_winrm]
 35.88.200.196

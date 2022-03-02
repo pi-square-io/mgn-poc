@@ -4,7 +4,7 @@
   tasks:
     - name: Download agent
       get_url: 
-        url: https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/aws-replication-installer-init.py 
+        url: https://aws-application-migration-service-{{ region }}.s3.{{ region }}.amazonaws.com/latest/linux/aws-replication-installer-init.py 
         dest: /tmp/aws-replication-installer-init.py
 
     - name: Ansible apt install python3
@@ -16,7 +16,7 @@
 
     - name: run agent
       become: true
-      shell: echo |python3 /tmp/aws-replication-installer-init.py --region eu-central-1 --aws-access-key-id {{ lookup('env', 'AWS_ACCESS_KEY_ID') }} --aws-secret-access-key {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }} 
+      shell: echo |python3 /tmp/aws-replication-installer-init.py --region {{ region }} --aws-access-key-id {{ lookup('env', 'AWS_ACCESS_KEY_ID') }} --aws-secret-access-key {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }} 
           
     # - name: check var
     #   debug:
